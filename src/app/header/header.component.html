@@ -1,0 +1,11 @@
+<div class="header">
+  <div class="header__text">
+    <span>UTBCards</span>
+  </div>
+  <ul class="header__links">
+    <li class="header__links__link" routerLink="/decks" routerLinkActive="active-link">Decks</li>
+    <li class="header__links__link" routerLink="/about" routerLinkActive="active-link">About</li>
+    <li class="header__links__link" routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true}">Homepage</li>
+    <i class="header__links__login fa fa-user" (click)="openLoginModal()"></i>
+  </ul>
+</div>

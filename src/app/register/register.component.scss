@@ -1,0 +1,11 @@
+@use 'src/colors' as color;
+
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  height: 40%;
+  color: white;
+  background-color: color.$grey-900;
+}

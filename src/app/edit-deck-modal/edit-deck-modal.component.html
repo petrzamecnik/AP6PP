@@ -1,0 +1,24 @@
+<div class="edit-deck-modal">
+  <div class="edit-deck-modal__content">
+    <h2 class="edit-deck-modal__title">
+      Edit Deck
+      <button class="edit-deck-modal__close-btn" (click)="closeModal()">X</button>
+    </h2>
+    <div class="edit-deck-modal__hline"></div>
+    <div class="edit-deck-modal__input-container">
+      <p class="edit-deck-modal__label">Title:</p>
+      <input class="edit-deck-modal__input" type="text" [(ngModel)]="title">
+    </div>
+    <div class="edit-deck-modal__input-container">
+      <p class="edit-deck-modal__label">Subject:</p>
+      <input class="edit-deck-modal__input" type="text" [(ngModel)]="subject">
+    </div>
+    <div class="edit-deck-modal__input-container">
+      <p class="edit-deck-modal__label">Field:</p>
+      <input class="edit-deck-modal__input" type="text" [(ngModel)]="field">
+    </div>
+    <div class="edit-deck-modal__button-row">
+      <button class="edit-deck-modal__button edit-deck-modal__button--create" (click)="editDeck()">Edit Deck</button>
+    </div>
+  </div>
+</div>

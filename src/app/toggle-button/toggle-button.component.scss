@@ -1,0 +1,40 @@
+@use 'src/colors' as color;
+
+$toggle-bg-off: color.$grey-500;
+$toggle-bg-on: color.$blue-dark;
+
+$toggle-transition-time: 0.2s;
+
+.toggle-button {
+  position: relative;
+  display: inline-block;
+  border-radius: 999px;
+  width: 60px;
+  height: 30px;
+  background-color: $toggle-bg-off;
+  cursor: pointer;
+
+  &--on {
+    background-color: $toggle-bg-on;
+
+
+    .toggle-button__circle {
+      //transform: translateX(30px);
+      transform: translate(30px, -50%);
+
+    }
+  }
+
+  &__circle {
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    transform: translate(-50%, -50%);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: color.$white;
+    transition: transform $toggle-transition-time ease-in-out;
+    z-index: 1;
+  }
+}

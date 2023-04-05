@@ -1,0 +1,43 @@
+<div class="login">
+  <div class="login__title">
+    <h1>Login</h1>
+  </div>
+  <div class="login__fields">
+    <div class="login__fields__row">
+      <app-label-input
+        id="emailInput"
+        label="Email"
+        type="text"
+        [(inputValue)]="userEmailValue"
+        (inputValueChange)="onEmailInputChange($event)">
+      </app-label-input>
+    </div>
+    <div class="login__fields__row">
+      <app-label-input
+        id="passwordInput"
+        label="Password"
+        type="password"
+        [(inputValue)]="passwordValue"
+        (inputValueChange)="onPasswordInputChange($event)">
+      </app-label-input>
+    </div>
+  </div>
+  <div class="login__buttons">
+    <button (click)="login()">Login</button>
+    <button>Cancel</button>
+  </div>
+  <button (click)="redirectToRegister()">Register</button>
+  <button (click)="logout()">Logout</button>
+</div>
+
+
+
+
+<!--<div class="login__fields__field">-->
+<!--  <label>Username: </label>-->
+<!--  <input type="text" [(ngModel)]="userEmailValue" autofocus>-->
+<!--</div>-->
+<!--<div class="login__fields__field">-->
+<!--  <label>Password: </label>-->
+<!--  <input type="password" [(ngModel)]="passwordValue">-->
+<!--</div>-->

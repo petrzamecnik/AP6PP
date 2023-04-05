@@ -1,0 +1,23 @@
+<div class="deck">
+  <div class="deck__container" (click)="onDeckClick(deck)">
+    <div class="deck__controls">
+      <i class="deck__controls__item fas fa-edit" (click)="onEditDeckClick($event, deck)"></i>
+      <i class="deck__controls__item fas fa-xmark" (click)="onRemoveDeckClick($event, deck)"></i>
+    </div>
+    <div class="deck__title">
+      <span class="deck__title-text">{{deck?.title | truncate:10}}</span>
+      <div class="deck__title-line"></div>
+    </div>
+    <div class="deck__text-fields">
+      <span class="deck__subject">Subject: {{deck?.subject}}</span>
+      <span class="deck__field">Field: {{deck?.field}}</span>
+    </div>
+
+    <div class="deck__rating">
+      <ng-container *ngFor="let star of Array(deck?.rating).fill(0)">
+        <i class="deck__star"></i>
+      </ng-container>
+    </div>
+  </div>
+  <span class="deck__type">deck</span>
+</div>

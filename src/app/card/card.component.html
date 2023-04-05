@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card__container" (click)="toggleCard()">
+    <div class="card__controls">
+    </div>
+    <div class="card__title">
+      <div class="card__title-container">
+        <span class="card__title-text">{{title | truncate:10}}</span>
+        <div class="card__title-line"></div>
+      </div>
+    </div>
+    <div class="card__text-fields">
+      <p>{{cardText}}</p>
+    </div>
+  </div>
+  <span class="card__type-left">card</span>
+  <span class="card__type-right">{{textType}}</span>
+</div>

@@ -1,0 +1,37 @@
+@use 'src/colors' as color;
+
+.login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  color: color.$white;
+  background-color: color.$grey-900;
+  padding: 1.2rem;
+  border-radius: 12px;
+
+  &__title {
+    margin: 1rem auto;
+    text-align: center;
+  }
+
+  &__fields {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+
+    &__row {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+}

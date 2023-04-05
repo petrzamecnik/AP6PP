@@ -1,0 +1,88 @@
+@use 'src/colors' as color;
+
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 16rem;
+  min-width: 300px;
+  max-width: 360px;
+  height: 28rem;
+  min-height: 460px;
+  margin: .6vw;
+  border-radius: 8px;
+  box-shadow: 4px 8px 5px 1px color.$black;
+  background-color: color.$grey-900;
+  color: color.$white;
+  border-left: 3px solid transparent;
+  transition: border-left-color .3s ease-in-out;
+
+  &:hover {
+    border-left: 3px solid color.$blue-light;
+    cursor: pointer;
+    transition: border-left-color .3s ease-in-out;
+
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 1rem auto;
+
+    &-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &-text {
+      font-size: 2.4rem;
+    }
+
+    &-line {
+      width: 130%;
+      height: 3px;
+      margin-top: .6vh;
+      background-color: color.$blue-light;
+      border-radius: 8px;
+    }
+  }
+
+  &__container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  }
+
+  &__text-fields {
+    height: 60%;
+    padding: 0 .8rem;
+    overflow-y: auto;
+    text-align: center;
+    user-select: none;
+  }
+
+  &__type-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 2vh 1vw;
+    color: color.$grey-700;
+  }
+
+  &__type-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 2vh 1vw;
+    color: color.$grey-700;
+  }
+}

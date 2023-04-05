@@ -1,0 +1,15 @@
+@use 'src/colors' as color;
+
+.label-text {
+  display: flex;
+
+
+  &__label {
+
+  }
+
+  &__text {
+    margin-left: .6rem;
+  }
+
+}

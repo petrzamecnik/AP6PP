@@ -1,0 +1,76 @@
+@use 'src/colors' as color;
+
+.deck-new {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 16rem;
+  min-width: 300px;
+  max-width: 360px;
+  height: 28rem;
+  min-height: 460px;
+  margin: .6vw;
+  border-radius: 8px;
+  box-shadow: 4px 8px 5px 1px color.$black;
+  background-color: color.$grey-900;
+  color: color.$white;
+  border-left: 3px solid transparent;
+  transition: border-left-color .3s ease-in-out;
+
+
+  &:hover {
+    border-left: 3px solid color.$blue-light;
+    transition: border-left-color .3s ease-in-out;
+
+
+    .deck-new__plus {
+      color: color.$blue-light;
+    }
+  }
+
+  &--new {
+    background-color: color.$blue-light;
+    cursor: pointer;
+
+    &:hover {
+      background-color: color.$blue-light;
+    }
+  }
+
+  &__plus {
+    font-size: 6rem;
+    margin-bottom: 1rem;
+    color: color.$white;
+    transition: color .3s ease-in-out;
+  }
+
+  &__title {
+    position: absolute;
+    top: 0;
+    margin: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-text {
+      font-size: 2.4rem;
+    }
+
+    &-line {
+      width: 130%;
+      height: 3px;
+      margin-top: .6vh;
+      background-color: color.$blue-light;
+    }
+  }
+
+  &__type {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 2vh 1vw;
+    color: color.$grey-700;
+  }
+}

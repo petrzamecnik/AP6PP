@@ -1,0 +1,28 @@
+<div class="new-deck-modal">
+  <div class="new-deck-modal__content">
+    <h2 class="new-deck-modal__title">
+      New Deck
+      <button class="new-deck-modal__close-btn" (click)="closeModal()">X</button>
+    </h2>
+    <div class="new-deck-modal__hline"></div>
+    <div class="new-deck-modal__input-container">
+      <p class="new-deck-modal__label">Title:</p>
+      <input class="new-deck-modal__input" type="text" [(ngModel)]="title">
+    </div>
+    <div class="new-deck-modal__input-container">
+      <p class="new-deck-modal__label">Subject:</p>
+      <input class="new-deck-modal__input" type="text" [(ngModel)]="subject">
+    </div>
+    <div class="new-deck-modal__input-container">
+      <p class="new-deck-modal__label">Field:</p>
+      <input class="new-deck-modal__input" type="text" [(ngModel)]="field">
+    </div>
+    <div *ngIf="fieldsEmpty" class="new-deck-modal__input-container">
+      <span class="warning">{{fieldsEmptyErrorMessage}}</span>
+    </div>
+
+    <div class="new-deck-modal__button-row">
+      <button class="new-deck-modal__button new-deck-modal__button--create" (click)="createDeck()">Create Deck</button>
+    </div>
+  </div>
+</div>

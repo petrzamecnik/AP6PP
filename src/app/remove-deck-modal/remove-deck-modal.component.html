@@ -1,0 +1,16 @@
+<div class="remove-deck-modal">
+  <div class="remove-deck-modal__content">
+    <h2 class="remove-deck-modal__title">
+      Remove Deck
+      <button class="remove-deck-modal__close-btn" (click)="closeModal()">X</button>
+    </h2>
+
+    <div class="remove-deck-modal__hline"></div>
+
+    <p>Are you sure to permanently remove this deck?</p>
+    <div class="remove-deck-modal__button-row">
+      <button class="remove-deck-modal__button remove-deck-modal__button--create" (click)="removeDeck()">Remove Deck</button>
+      <button class="remove-deck-modal__button remove-deck-modal__button--create" (click)="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>

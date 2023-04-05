@@ -1,1 +1,45 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'src/colors' as color;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.warning {
+  color: #e81d1d;
+}
+
+.success {
+  color: #2cd22c;
+}
+
+.transition-duration-03 {
+  transition-duration: .3s;
+}
+
+body {
+  overflow-y: hidden;
+}
+
+.main-container {
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: color.$grey-900;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: color.$blue-dark;
+  border-radius: 10px;
+}

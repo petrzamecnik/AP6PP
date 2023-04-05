@@ -1,0 +1,50 @@
+@use 'src/colors' as color;
+
+.active-link {
+  border-bottom: 1px solid color.$blue-light;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  padding: 0 1.2rem;
+  width: 100%;
+  min-height: 40px;
+  height: 4rem;
+  color: color.$white;
+  background-color: color.$grey-900;
+  font-size: 1.2rem;
+  box-sizing: border-box;
+
+  &__text {
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+
+    &__login {
+      margin: 0 1rem;
+
+      &:hover {
+        color: color.$blue-light;
+      }
+    }
+
+    &__link {
+      padding: 0.3rem .6rem;
+
+      &:nth-child(2) {
+        margin: 0 1rem;
+      }
+
+      &:hover {
+        color: color.$blue-light;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+<div class="decks">
+
+  <div class="decks__modals">
+    <app-new-deck-modal *ngIf="newDeckModalIsOpen$.value"></app-new-deck-modal>
+    <app-edit-deck-modal *ngIf="editDeckModalIsOpen$.value"></app-edit-deck-modal>
+    <app-remove-deck-modal *ngIf="removeDeckModalIsOpen$.value"></app-remove-deck-modal>
+  </div>
+
+  <div class="decks__left-container">
+    <div class="circle" [ngClass]="{'expanded': leftContainerIsExpanded}" (click)="toggleLeftContainer()">
+      <ng-container *ngIf="!leftContainerIsExpanded">
+        <i class="fa fa-plus"></i>
+      </ng-container>
+      <ng-container *ngIf="leftContainerIsExpanded">
+        <i class="fa fa-minus"></i>
+      </ng-container>
+
+    </div>
+
+
+    <div [ngClass]="{'visible': leftContainerIsExpanded}" class="text-container transition-duration-03">
+      <p>{{description}}</p>
+      <div class="decks__row">
+        <span class="decks__row__text">View all decks</span>
+        <app-toggle-button class="decks__row__toggle" (toggleChange)="onToggleChange($event)"></app-toggle-button>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <div class="decks__right-container">
+    <div class="decks__right-container__inner">
+      <div class="decks__right-container__deck" *ngFor="let deck of decks">
+        <app-deck [deck]="deck"></app-deck>
+      </div>
+      <app-new-deck></app-new-deck>
+    </div>
+  </div>
+</div>
