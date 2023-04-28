@@ -2,6 +2,13 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.8.
 
+# Prerequisites
+
+Before running this project, you need to have the following tools installed on your machine:
+
+#### Node.js (version 14.16 or higher)
+#### npm (version 7.20 or higher)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
