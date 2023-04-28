@@ -19,6 +19,23 @@
   color: #2cd22c;
 }
 
+button {
+  color: color.$grey-300;
+  font-size: 1.1rem;
+  background: color.$blue-dark;
+  border: 1px solid color.$grey-900;
+  width: 90px;
+  height: 45px;
+  margin: .2rem;
+  padding: 0.1rem;
+  border-radius: 8px;
+
+  &:hover {
+    color: color.$grey-900;
+    border: 1px solid color.$blue-dark;
+  }
+}
+
 .transition-duration-03 {
   transition-duration: .3s;
 }

@@ -1,0 +1,28 @@
+<div class="new-card-modal">
+  <div class="new-card-modal__content">
+    <h2 class="new-card-modal__title">
+      New Card
+      <button class="new-card-modal__close-btn fa fa-xmark" (click)="closeModal()"></button>
+    </h2>
+    <div class="new-card-modal__hline"></div>
+    <div class="new-card-modal__input-container">
+      <p class="new-card-modal__label">Title:</p>
+      <input class="new-card-modal__input" type="text" [(ngModel)]="title">
+    </div>
+    <div class="new-card-modal__input-container">
+      <p class="new-card-modal__label">Question:</p>
+      <input class="new-card-modal__input" type="text" [(ngModel)]="question">
+    </div>
+    <div class="new-card-modal__input-container">
+      <p class="new-card-modal__label">Answer:</p>
+      <input class="new-card-modal__input" type="text" [(ngModel)]="answer">
+    </div>
+    <div *ngIf="fieldsEmpty" class="new-card-modal__input-container">
+      <span class="warning">{{fieldsEmptyErrorMessage}}</span>
+    </div>
+
+    <div class="new-card-modal__button-row">
+      <button class="new-card-modal__button new-card-modal__button--create" (click)="createCard()">Create Card</button>
+    </div>
+  </div>
+</div>

@@ -1,14 +1,22 @@
 <div class="deck-view">
   <div class="deck-view__modals">
+    <app-new-card-modal *ngIf="newCardModalIsOpen$.value"></app-new-card-modal>
+    <app-edit-card-modal *ngIf="editCardModalIsOpen$.value"></app-edit-card-modal>
+    <app-delete-card-modal *ngIf="deleteCardModalIsOpen$.value"></app-delete-card-modal>
   </div>
   <div class="deck-view__left-container">
-    <div class="circle" [ngClass]="{'expanded': leftContainerIsExpanded}" (click)="toggleLeftContainer()">
-      <ng-container *ngIf="!leftContainerIsExpanded">
-        <i class="fa fa-plus"></i>
-      </ng-container>
-      <ng-container *ngIf="leftContainerIsExpanded">
-        <i class="fa fa-minus"></i>
-      </ng-container>
+    <div class="deck-view__left-container__buttons">
+      <div class="circle" [ngClass]="{'expanded': leftContainerIsExpanded}" (click)="toggleLeftContainer()">
+        <ng-container *ngIf="!leftContainerIsExpanded">
+          <i class="fa fa-plus"></i>
+        </ng-container>
+        <ng-container *ngIf="leftContainerIsExpanded">
+          <i class="fa fa-minus"></i>
+        </ng-container>
+      </div>
+      <div [style.color]="editing ? '#00BAFF' : ''" class="edit" (click)="toggleEditing()">
+        <i class="fa fa-edit"></i>
+      </div>
     </div>
     <div [ngClass]="{'visible': leftContainerIsExpanded}" class="text-container transition-duration-03">
       <p>description</p>
@@ -18,8 +26,11 @@
   <div class="deck-view__right-container">
     <div class="deck-view__right-container__inner">
       <div class="deck-view__right-container__deck" *ngFor="let card of cards">
-        <app-card [card]="card"></app-card>
+        <app-card [card]="card" [isEditing]="editing"></app-card>
       </div>
+      <ng-container *ngIf="editing || !cards.length">
+        <app-new-card></app-new-card>
+      </ng-container>
     </div>
   </div>
 </div>

@@ -23,6 +23,10 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { LabelInputComponent } from './label-input/label-input.component';
 import { ToggleButtonComponent } from './toggle-button/toggle-button.component';
+import { NewCardComponent } from './new-card/new-card.component';
+import { NewCardModalComponent } from './new-card-modal/new-card-modal.component';
+import { EditCardModalComponent } from './edit-card-modal/edit-card-modal.component';
+import { DeleteCardModalComponent } from './delete-card-modal/delete-card-modal.component';
 
 
 @NgModule({
@@ -46,7 +50,10 @@ import { ToggleButtonComponent } from './toggle-button/toggle-button.component';
     LoginComponent,
     LabelInputComponent,
     ToggleButtonComponent,
-
+    NewCardComponent,
+    NewCardModalComponent,
+    EditCardModalComponent,
+    DeleteCardModalComponent,
   ],
   imports: [
     BrowserModule,

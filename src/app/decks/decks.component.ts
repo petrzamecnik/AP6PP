@@ -47,7 +47,6 @@ export class DecksComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((data) => {
         if (data) {
-          // this.decks = data;
           const authorId = this._authService.loggedInUserId;
           this.decks = data.filter(deck => deck.authorId === authorId);
         }

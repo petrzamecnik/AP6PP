@@ -14,6 +14,7 @@ export class AuthService {
   private _allUsers$ = new BehaviorSubject<IUser[] | null>(null);
   private _loginStatusKey = 'loginStatus';
 
+  isLoggedIn$ = new BehaviorSubject<boolean>(false);
   navigatedFrom$ = new BehaviorSubject<string>('');
 
   constructor(private http: HttpClient, private _dbService: DatabaseService, private _router: Router) {
@@ -75,6 +76,7 @@ export class AuthService {
           userId: user.id,
         };
         sessionStorage.setItem(this._loginStatusKey, JSON.stringify(loggedInData));
+        this.isLoggedIn$.next(true);
         this.decideNextNavigation()
       } else {
         alert('password does not match!')
@@ -85,6 +87,7 @@ export class AuthService {
   }
   logout() {
     sessionStorage.removeItem(this._loginStatusKey);
+    this.isLoggedIn$.next(false);
     this._router.navigate(['/login']);
   }
 

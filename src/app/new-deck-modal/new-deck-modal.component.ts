@@ -23,7 +23,7 @@ export class NewDeckModalComponent implements OnInit {
     title: '',
     subject: '',
     field: '',
-    author: 'System',
+    author: '',
     authorId: '',
     rating: 3,
     cards: [],
@@ -43,13 +43,10 @@ export class NewDeckModalComponent implements OnInit {
     this.newDeck.subject = this.subject;
     this.newDeck.field = this.field;
 
-    const currentUserId = this._authService.loggedInUserId;
-
-    if (currentUserId) {
-      this.newDeck.authorId = currentUserId;
-    }
 
     if (this.title.trim() !== '' && this.subject.trim() !== '' && this.field.trim() !== '') {
+      const currentUserId = this._authService.loggedInUserId;
+      this.newDeck.authorId = currentUserId as string;
       this.fieldsEmpty = false;
 
       this._dbService.addDeck(this.newDeck).subscribe(() => {

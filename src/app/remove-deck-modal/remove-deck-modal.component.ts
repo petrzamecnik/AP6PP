@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ModalService} from "../services/modal.service";
 import {DatabaseService} from "../services/database.service";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-remove-deck-modal',
@@ -12,7 +13,7 @@ export class RemoveDeckModalComponent implements OnInit {
   subject: any;
   field: any;
 
-  constructor(private _modalService: ModalService, private _dbService: DatabaseService) { }
+  constructor(private _modalService: ModalService, private _dbService: DatabaseService, private _authService: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -23,17 +24,25 @@ export class RemoveDeckModalComponent implements OnInit {
 
   removeDeck() {
     const deckToRemove = this._modalService.selectedDeck.value;
+    const currentUserId = this._authService.loggedInUserId;
 
-    this._dbService.removeDeck(deckToRemove.id).subscribe(
-      () => {
-        console.log(`Deck with ID ${deckToRemove.id} deleted successfully`);
-        this.closeModal();
-        // If you want to update the list of decks after deleting the deck, you can call the `getDecks()` method again
-      },
-      error => {
-        console.error(`Error deleting deck with ID ${deckToRemove.id}: ${error.message}`);
-        this.closeModal();
-      }
-    );
+    if (deckToRemove.authorId === currentUserId) {
+      this._dbService.removeDeck(deckToRemove.id).subscribe(
+        () => {
+          console.log(`Deck with ID ${deckToRemove.id} deleted successfully`);
+          this.closeModal();
+          // If you want to update the list of decks after deleting the deck, you can call the `getDecks()` method again
+        },
+        error => {
+          console.error(`Error deleting deck with ID ${deckToRemove.id}: ${error.message}`);
+          this.closeModal();
+        }
+      )
+    } else {
+      this.closeModal();
+      setTimeout(() => {
+        alert('You cannot remove deck that is not your!');
+      }, 100);
+    }
   }
 }

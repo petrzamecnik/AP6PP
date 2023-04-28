@@ -1,0 +1,28 @@
+<div class="edit-card-modal">
+  <div class="edit-card-modal__content">
+    <h2 class="edit-card-modal__title">
+      Edit Card
+      <button class="edit-card-modal__close-btn fa fa-xmark" (click)="closeModal()"></button>
+    </h2>
+    <div class="edit-card-modal__hline"></div>
+    <div class="edit-card-modal__input-container">
+      <p class="edit-card-modal__label">Title:</p>
+      <input class="edit-card-modal__input" type="text" [(ngModel)]="title">
+    </div>
+    <div class="edit-card-modal__input-container">
+      <p class="edit-card-modal__label">Question:</p>
+      <input class="edit-card-modal__input" type="text" [(ngModel)]="question">
+    </div>
+    <div class="edit-card-modal__input-container">
+      <p class="edit-card-modal__label">Answer:</p>
+      <input class="edit-card-modal__input" type="text" [(ngModel)]="answer">
+    </div>
+    <div *ngIf="fieldsEmpty" class="edit-card-modal__input-container">
+      <span class="warning">{{fieldsEmptyErrorMessage}}</span>
+    </div>
+
+    <div class="edit-card-modal__button-row">
+      <button class="edit-card-modal__button edit-card-modal__button--create" (click)="editCard()">Edit Card</button>
+    </div>
+  </div>
+</div>

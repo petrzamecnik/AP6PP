@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card__container" (click)="toggleCard()">
+  <div class="card__container" (click)="onCardClick()">
     <div class="card__controls">
     </div>
     <div class="card__title">
@@ -8,9 +8,17 @@
         <div class="card__title-line"></div>
       </div>
     </div>
-    <div class="card__text-fields">
-      <p>{{cardText}}</p>
-    </div>
+    <ng-container *ngIf="!isEditing; else editing">
+      <div class="card__text-fields">
+        <p>{{cardText}}</p>
+      </div>
+    </ng-container>
+    <ng-template #editing>
+      <div class="card__editing">
+        <button type="button" (click)="onEditClick(card)">Edit</button>
+        <button type="button" (click)="onDeleteClick(card)">Delete</button>
+      </div>
+    </ng-template>
   </div>
   <span class="card__type-left">card</span>
   <span class="card__type-right">{{textType}}</span>

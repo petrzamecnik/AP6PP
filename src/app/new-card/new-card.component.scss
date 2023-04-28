@@ -1,10 +1,11 @@
 @use 'src/colors' as color;
 
-
-.card {
+.card-new {
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 16rem;
   min-width: 300px;
   max-width: 360px;
@@ -18,28 +19,40 @@
   border-left: 3px solid transparent;
   transition: border-left-color .3s ease-in-out;
 
+
   &:hover {
     border-left: 3px solid color.$blue-light;
-    cursor: pointer;
     transition: border-left-color .3s ease-in-out;
 
+
+    .card-new__plus {
+      color: color.$blue-light;
+    }
+  }
+
+  &--new {
+    background-color: color.$blue-light;
+    cursor: pointer;
+
+    &:hover {
+      background-color: color.$blue-light;
+    }
+  }
+
+  &__plus {
+    font-size: 6rem;
+    margin-bottom: 1rem;
+    color: color.$white;
+    transition: color .3s ease-in-out;
   }
 
   &__title {
+    position: absolute;
+    top: 0;
+    margin: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: 1rem auto;
-
-    &-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
 
     &-text {
       font-size: 2.4rem;
@@ -50,45 +63,13 @@
       height: 3px;
       margin-top: .6vh;
       background-color: color.$blue-light;
-      border-radius: 8px;
     }
   }
 
-  &__container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-  }
-
-  &__text-fields {
-    height: 60%;
-    padding: 0 .8rem;
-    overflow-y: auto;
-    text-align: center;
-    user-select: none;
-  }
-
-  &__editing {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60%;
-  }
-
-  &__type-left {
+  &__type {
     position: absolute;
     bottom: 0;
     left: 0;
-    margin: 2vh 1vw;
-    color: color.$grey-700;
-  }
-
-  &__type-right {
-    position: absolute;
-    bottom: 0;
-    right: 0;
     margin: 2vh 1vw;
     color: color.$grey-700;
   }

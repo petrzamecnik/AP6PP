@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
 
 
     if (this.userNameValue !== '' && this.userEmailValue !== '' && this.passwordValue !== '') {
-
+      // TODO: remove this shit
       console.log('username: ', userName);
       console.log('email: ', email);
       console.log('password: ', password);
