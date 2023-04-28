@@ -1,9 +1,10 @@
 <div class="homepage">
   <div class="homepage__left">
-    <h1>Project description</h1>
+    <h2>Project description</h2>
     <p>{{projectDescription}}</p>
   </div>
   <div class="homepage__right">
-    <span>right cockie</span>
+    <h2>Team</h2>
+    <h3 class="homepage__member" *ngFor="let member of teamMembers">{{member}}</h3>
   </div>
 </div>

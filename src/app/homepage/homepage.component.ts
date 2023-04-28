@@ -14,7 +14,7 @@ export class HomepageComponent implements OnInit {
     '      knowledge.'
 
   teamName = 'Undefined';
-  teamMembers = ['Petr', 'Kryštof', 'Marek', 'Jožo'];
+  teamMembers = ['Petr', 'Jožo', 'Marek', 'Kryštof'];
 
 
   constructor() {
