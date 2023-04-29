@@ -19,6 +19,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private _dbService: DatabaseService, private _router: Router) {
     this.getUsers();
+    this.isLoggedIn$.next(this.checkIfUserIsLoggedIn());
   }
 
   get isLoggedIn(): boolean {
@@ -108,6 +109,12 @@ export class AuthService {
   private getLoggedInData(): { isLoggedIn: boolean, userId: string } | null {
     const loggedInDataJson = sessionStorage.getItem(this._loginStatusKey);
     return loggedInDataJson ? JSON.parse(loggedInDataJson) : null;
+  }
+
+  checkIfUserIsLoggedIn(): boolean {
+    const loggedInData = this.getLoggedInData();
+    const currentUserId = this.loggedInUserId;
+    return loggedInData?.userId === currentUserId;
   }
 
   decideNextNavigation(): void {
