@@ -10,8 +10,8 @@
   height: 400px;
   color: color.$white;
   background-color: color.$grey-900;
+  border-radius: 12px;
   z-index: 999;
-
 
   &__content {
     display: flex;
