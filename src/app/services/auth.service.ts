@@ -54,7 +54,8 @@ export class AuthService {
       };
 
       this._dbService.addNewUser(user).subscribe(() => {
-        this._router.navigate(['/']);
+        this.getUsers();
+        this._router.navigate(['/login']);
       }, (error) => {
         console.error('Error adding new user: ', error);
       })
@@ -96,9 +97,7 @@ export class AuthService {
   }
 
   findUserByEmail(email: string): IUser | null {
-    console.log('all users:', this._allUsers$.value);
     const user = this._allUsers$.value?.find((user) => user.email === email);
-    console.log('found user:', user);
     return user || null;
   }
 
@@ -114,10 +113,12 @@ export class AuthService {
   }
 
   decideNextNavigation(): void {
-    console.log('checkNextNavigation: ', this.navigatedFrom$.value);
     if (this.navigatedFrom$.value === 'decks') {
       this.navigatedFrom$.next('');
       this._router.navigate(['/decks']);
+    } else if (this.navigatedFrom$.value === 'register') {
+      this.navigatedFrom$.next('');
+      this._router.navigate(['/login']);
     } else {
       this._router.navigate(['/']);
     }
