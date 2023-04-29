@@ -77,6 +77,11 @@ $left-container-width: 300px;
     font-size: 2rem;
     color: color.$white;
     cursor: pointer;
+    border: 2px solid transparent;
+
+    &:hover {
+      border: 2px solid color.$blue-light;
+    }
   }
 
   .import {
@@ -91,6 +96,11 @@ $left-container-width: 300px;
     font-size: 1.6rem;
     color: color.$white;
     cursor: pointer;
+    border: 2px solid transparent;
+
+    &:hover {
+      border: 2px solid color.$blue-light;
+    }
   }
 
 
