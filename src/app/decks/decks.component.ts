@@ -2,11 +2,12 @@ import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import { IDeck } from '../../interfaces/interfaces';
 import { DecksService } from '../services/decks.service';
 import {distinctUntilChanged, takeUntil} from 'rxjs/operators';
-import {BehaviorSubject, Subject} from 'rxjs';
+import {BehaviorSubject, map, Observable, Subject} from 'rxjs';
 import { ModalService } from '../services/modal.service';
 import {AuthService} from "../services/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ToggleButtonComponent} from "../toggle-button/toggle-button.component";
+import {DatabaseService} from "../services/database.service";
 
 @Component({
   selector: 'app-decks',
@@ -28,7 +29,8 @@ export class DecksComponent implements OnInit, OnDestroy {
     private _modalService: ModalService,
     private _authService: AuthService,
     private _router: Router,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _dbService: DatabaseService
   ) {}
 
   ngOnInit() {
@@ -97,4 +99,35 @@ export class DecksComponent implements OnInit, OnDestroy {
   }
 
   protected readonly isSecureContext = isSecureContext;
+
+  importDeck(event: any): void {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsText(file);
+    reader.onload = () => {
+      try {
+        const deck = JSON.parse(reader.result as string) as IDeck;
+          this.checkDeckExists(deck).subscribe(exists => {
+            if (exists) {
+              alert('Deck already exists in database!');
+            } else {
+              this._dbService.addDeck(deck).subscribe(() => {
+                this._dbService.getDecks().subscribe();
+                alert('Deck imported successfully!');
+              });
+            }
+          });
+      } catch (err) {
+        console.error(err);
+        alert('Error parsing JSON!');
+      }
+    };
+  }
+
+  private checkDeckExists(deck: IDeck): Observable<boolean> {
+    return this._dbService.getDecks().pipe(
+      map((decks) => !!decks.find(d => d.id === deck.id))
+    );
+  }
+
 }

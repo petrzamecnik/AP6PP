@@ -30,6 +30,10 @@ $left-container-width: 300px;
   &__left-container {
     position: fixed;
     width: $left-container-width;
+
+    &__buttons {
+      display: flex;
+    }
   }
 
   &__right-container {
@@ -67,12 +71,28 @@ $left-container-width: 300px;
     align-items: center;
     width: 50px;
     height: 50px;
+    margin-right: .6rem;
     border-radius: 100%;
     background-color: color.$grey-900;
     font-size: 2rem;
     color: color.$white;
     cursor: pointer;
   }
+
+  .import {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    margin-right: .6rem;
+    border-radius: 100%;
+    background-color: color.$grey-900;
+    font-size: 1.6rem;
+    color: color.$white;
+    cursor: pointer;
+  }
+
 
   .text-container {
     position: absolute;

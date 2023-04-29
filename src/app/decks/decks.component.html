@@ -7,14 +7,21 @@
   </div>
 
   <div class="decks__left-container">
-    <div class="circle" [ngClass]="{'expanded': leftContainerIsExpanded}" (click)="toggleLeftContainer()">
-      <ng-container *ngIf="!leftContainerIsExpanded">
-        <i class="fa fa-plus"></i>
-      </ng-container>
-      <ng-container *ngIf="leftContainerIsExpanded">
-        <i class="fa fa-minus"></i>
-      </ng-container>
+    <div class="decks__left-container__buttons">
+      <div class="circle" [ngClass]="{'expanded': leftContainerIsExpanded}" (click)="toggleLeftContainer()">
+        <ng-container *ngIf="!leftContainerIsExpanded">
+          <i class="fa fa-plus"></i>
+        </ng-container>
+        <ng-container *ngIf="leftContainerIsExpanded">
+          <i class="fa fa-minus"></i>
+        </ng-container>
+      </div>
+      <div class="import" (click)="importDeckInput.click()">
+        <i class="fa fa-file-import"></i>
+        <input #importDeckInput type="file" (change)="importDeck($event)" style="display: none">
+      </div>
     </div>
+
     <div [ngClass]="{'visible': leftContainerIsExpanded}" class="text-container transition-duration-03">
       <div class="decks__row">
         <span class="decks__row__title">View all decks</span>
