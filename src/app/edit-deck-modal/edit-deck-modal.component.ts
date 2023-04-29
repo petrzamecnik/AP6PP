@@ -61,11 +61,9 @@ export class EditDeckModalComponent implements OnInit, OnDestroy {
 
         this._dbService.updateDeck(this.deckToEdit).subscribe(
           () => {
-            console.log(`Deck with ID ${this.deckToEdit.id} updated successfully`);
             this.closeModal();
           },
           error => {
-            console.error(`Error updating deck with ID ${this.deckToEdit.id}: ${error.message}`);
             this.closeModal();
           }
         )

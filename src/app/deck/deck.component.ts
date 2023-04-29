@@ -39,8 +39,6 @@ export class DeckComponent implements OnInit {
       this._modalService.selectedDeck.next(deck);
       this._modalService.removeDeckModalIsOpen.next(true);
     }
-
-    console.log('remove deck');
   }
 
   onEditDeckClick(event: MouseEvent, deck: IDeck | undefined) {
@@ -50,7 +48,5 @@ export class DeckComponent implements OnInit {
       this._modalService.selectedDeck.next(deck);
       this._modalService.editDeckModalIsOpen.next(true);
     }
-
-    console.log('edit deck');
   }
 }

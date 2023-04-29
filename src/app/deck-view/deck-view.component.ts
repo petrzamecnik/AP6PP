@@ -40,7 +40,6 @@ export class DeckViewComponent implements OnInit, AfterViewInit {
         if (data) {
           this.selectedDeck = data;
           this.updateDeckInfo(data);
-          console.log('deck data: ', data)
           this.cards = this.selectedDeck.cards;
         }
       })

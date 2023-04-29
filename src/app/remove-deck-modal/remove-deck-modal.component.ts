@@ -29,9 +29,7 @@ export class RemoveDeckModalComponent implements OnInit {
     if (deckToRemove.authorId === currentUserId) {
       this._dbService.removeDeck(deckToRemove.id).subscribe(
         () => {
-          console.log(`Deck with ID ${deckToRemove.id} deleted successfully`);
           this.closeModal();
-          // If you want to update the list of decks after deleting the deck, you can call the `getDecks()` method again
         },
         error => {
           console.error(`Error deleting deck with ID ${deckToRemove.id}: ${error.message}`);

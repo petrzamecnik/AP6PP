@@ -19,6 +19,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private _dbService: DatabaseService, private _router: Router) {
     this.getUsers();
+    this.isLoggedIn$.next(this.checkIfUserIsLoggedIn());
   }
 
   get isLoggedIn(): boolean {
@@ -40,8 +41,6 @@ export class AuthService {
   }
 
   async register(userName: string, email: string, password: string) {
-    console.log(this._allUsers$.value)
-
     if (this.emailIsUnique(email)) {
       const userId = this.generateId();
       const hashedPassword = await bcrypt.hash(password, 10);
@@ -61,7 +60,7 @@ export class AuthService {
       })
 
     } else {
-      console.log('This email is already used!');
+      alert('This email is already used.')
     }
   }
 
@@ -110,6 +109,12 @@ export class AuthService {
   private getLoggedInData(): { isLoggedIn: boolean, userId: string } | null {
     const loggedInDataJson = sessionStorage.getItem(this._loginStatusKey);
     return loggedInDataJson ? JSON.parse(loggedInDataJson) : null;
+  }
+
+  checkIfUserIsLoggedIn(): boolean {
+    const loggedInData = this.getLoggedInData();
+    const currentUserId = this.loggedInUserId;
+    return loggedInData?.userId === currentUserId;
   }
 
   decideNextNavigation(): void {
