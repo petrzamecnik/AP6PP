@@ -21,6 +21,21 @@ $left-container-width: 300px;
     }
   }
 
+  &__row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    width: 80%;
+
+    &__title {
+      margin-right: .6rem;
+    }
+
+    &__value {
+
+    }
+  }
+
   &__right-container {
     display: flex;
     justify-content: center;

@@ -41,6 +41,12 @@ export class DatabaseService {
     );
   }
 
+  getDeckById(id: string): Observable<IDeck> {
+    const deckUrl = `${this.baseUrl}/decks/${id}`;
+
+    return this._http.get<IDeck>(deckUrl);
+  }
+
   addDeck(deck: IDeck): Observable<IDeck> {
     this.decksChanged.next();
     return this._http.post<IDeck>(`${this.baseUrl}/decks`, deck)
