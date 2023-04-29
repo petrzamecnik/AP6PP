@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {Observable, Subject, takeUntil} from 'rxjs';
+import {Observable, Subject, take, takeUntil} from 'rxjs';
 import {ICard, IDeck} from '../../interfaces/interfaces';
 import {DecksService} from '../services/decks.service';
 import {ActivatedRoute, Router} from "@angular/router";
@@ -16,6 +16,10 @@ export class DeckViewComponent implements OnInit, AfterViewInit {
   selectedDeck: IDeck = {
     author: "", authorId: "", cards: [], field: "", id: "", lastUpdated: "", rating: 0, subject: "", title: ""
   }
+  deckTitle = '';
+  deckSubject = '';
+  deckField = '';
+
   cards: ICard[] = []
   leftContainerIsExpanded = false;
   editing = false;
@@ -35,6 +39,8 @@ export class DeckViewComponent implements OnInit, AfterViewInit {
       .subscribe((data) => {
         if (data) {
           this.selectedDeck = data;
+          this.updateDeckInfo(data);
+          console.log('deck data: ', data)
           this.cards = this.selectedDeck.cards;
         }
       })
@@ -52,12 +58,14 @@ export class DeckViewComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     if (!this.cards.length) {
       const deckId = this._route.snapshot.paramMap.get('id') as string;
-      console.log(deckId)
-      this._dbService.getCardsByDeckId(deckId).pipe().subscribe((res) => {
-        if (res) {
-          this.cards = res;
-        }
-      });
+      this._dbService.getDeckById(deckId)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe((deck) => {
+          if (deck) {
+            this.selectedDeck = deck;
+            this.cards = deck.cards;
+          }
+        })
     }
   }
 
@@ -75,6 +83,12 @@ export class DeckViewComponent implements OnInit, AfterViewInit {
     );
   }
 
+  updateDeckInfo(deck: IDeck): void {
+    this.deckTitle = deck.title;
+    this.deckSubject = deck.subject;
+    this.deckField = deck.field
+  }
+
   toggleLeftContainer(): void {
     this.leftContainerIsExpanded = !this.leftContainerIsExpanded;
     const rightContainer = document.querySelector('.deck-view__right-container');
@@ -85,5 +99,18 @@ export class DeckViewComponent implements OnInit, AfterViewInit {
 
   toggleEditing() {
     this.editing = !this.editing;
+  }
+
+  shareCurentDeck() {
+    const deckJson = JSON.stringify(this.selectedDeck);
+    const blob = new Blob([deckJson], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.download = `${this.selectedDeck.title}.json`;
+    link.href = url;
+    link.click();
+
+    URL.revokeObjectURL(url);
   }
 }

@@ -17,10 +17,26 @@
       <div [style.color]="editing ? '#00BAFF' : ''" class="edit" (click)="toggleEditing()">
         <i class="fa fa-edit"></i>
       </div>
+      <div class="export" (click)="shareCurentDeck()">
+        <i class="fa fa-download"></i>
+      </div>
     </div>
     <div [ngClass]="{'visible': leftContainerIsExpanded}" class="text-container transition-duration-03">
-      <p>description</p>
-      <app-label-text [label]="'Current Deck'" [text]="selectedDeck.title"></app-label-text>
+      <div class="deck-view__row">
+        <h1>Description</h1>
+      </div>
+      <div class="deck-view__row">
+        <app-label-text [label]="'Deck Title'" [text]="selectedDeck.title"></app-label-text>
+      </div>
+      <div class="deck-view__row">
+        <app-label-text [label]="'Deck Field'" [text]="selectedDeck.field"></app-label-text>
+      </div>
+      <div class="deck-view__row">
+        <app-label-text [label]="'Deck Subject'" [text]="selectedDeck.subject"></app-label-text>
+      </div>
+      <div class="deck-view__row">
+        <app-label-text [label]="'Number of cards'" [text]="selectedDeck.cards.length"></app-label-text>
+      </div>
     </div>
   </div>
   <div class="deck-view__right-container">

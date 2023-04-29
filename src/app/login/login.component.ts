@@ -25,12 +25,6 @@ export class LoginComponent {
     const email = this.userEmailValue.trim();
     const password = this.passwordValue.trim();
 
-    console.log('email: ', email);
-    console.log('password: ', password);
-
-    const previousRouteUrl = this._activatedRoute.snapshot.queryParams['returnUrl'];
-    const isNavigatingFromDecksComponent = previousRouteUrl && previousRouteUrl.startsWith('/decks');
-
     this._authService.login(email, password);
   }
 

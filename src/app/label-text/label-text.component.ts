@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class LabelTextComponent implements OnInit {
   @Input() label = ''
-  @Input() text = ''
+  @Input() text: string | number = ''
 
   constructor() { }
 
