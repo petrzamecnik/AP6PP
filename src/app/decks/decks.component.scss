@@ -15,10 +15,15 @@ $left-container-width: 300px;
   &__row {
     display: flex;
     align-items: center;
+    margin-bottom: 1rem;
     width: 80%;
 
-    &__text {
+    &__title {
       margin-right: .6rem;
+    }
+
+    &__value {
+
     }
   }
 

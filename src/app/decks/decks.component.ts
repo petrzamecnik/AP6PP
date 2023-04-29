@@ -2,7 +2,7 @@ import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 import { IDeck } from '../../interfaces/interfaces';
 import { DecksService } from '../services/decks.service';
 import {distinctUntilChanged, takeUntil} from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import {BehaviorSubject, Subject} from 'rxjs';
 import { ModalService } from '../services/modal.service';
 import {AuthService} from "../services/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -15,12 +15,11 @@ import {ToggleButtonComponent} from "../toggle-button/toggle-button.component";
 })
 export class DecksComponent implements OnInit, OnDestroy {
   decks: IDeck[] = [];
-  leftContainerIsExpanded = false;
-  description: string = 'Some text to display when circle is expanded';
-
+  currentUserDecks$ = new BehaviorSubject<IDeck[]>([]);
   newDeckModalIsOpen$ = this._modalService.newDeckModalIsOpen;
   editDeckModalIsOpen$ = this._modalService.editDeckModalIsOpen;
   removeDeckModalIsOpen$ = this._modalService.removeDeckModalIsOpen;
+  leftContainerIsExpanded = false;
 
   private destroy$ = new Subject<void>();
 
@@ -49,6 +48,7 @@ export class DecksComponent implements OnInit, OnDestroy {
         if (data) {
           const authorId = this._authService.loggedInUserId;
           this.decks = data.filter(deck => deck.authorId === authorId);
+          this.updateCurrentUserDecksCount();
         }
       });
 
@@ -61,6 +61,14 @@ export class DecksComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  updateCurrentUserDecksCount() {
+    this.currentUserDecks$.next(this.decks.filter((deck) => deck.authorId === this._authService.loggedInUserId));
+  }
+
+  getOtherUserDeckCount(): number {
+    return this.decks.length - this.currentUserDecks$.value.length;
   }
 
   toggleLeftContainer(): void {
@@ -87,4 +95,6 @@ export class DecksComponent implements OnInit, OnDestroy {
         }
       });
   }
+
+  protected readonly isSecureContext = isSecureContext;
 }
