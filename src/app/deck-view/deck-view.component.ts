@@ -100,4 +100,17 @@ export class DeckViewComponent implements OnInit, AfterViewInit {
   toggleEditing() {
     this.editing = !this.editing;
   }
+
+  shareCurentDeck() {
+    const deckJson = JSON.stringify(this.selectedDeck);
+    const blob = new Blob([deckJson], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
+    link.download = `${this.selectedDeck.title}.json`;
+    link.href = url;
+    link.click();
+
+    URL.revokeObjectURL(url);
+  }
 }

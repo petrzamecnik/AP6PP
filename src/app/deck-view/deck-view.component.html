@@ -17,6 +17,9 @@
       <div [style.color]="editing ? '#00BAFF' : ''" class="edit" (click)="toggleEditing()">
         <i class="fa fa-edit"></i>
       </div>
+      <div class="export" (click)="shareCurentDeck()">
+        <i class="fa fa-download"></i>
+      </div>
     </div>
     <div [ngClass]="{'visible': leftContainerIsExpanded}" class="text-container transition-duration-03">
       <div class="deck-view__row">
