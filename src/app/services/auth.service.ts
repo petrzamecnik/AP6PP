@@ -40,8 +40,6 @@ export class AuthService {
   }
 
   async register(userName: string, email: string, password: string) {
-    console.log(this._allUsers$.value)
-
     if (this.emailIsUnique(email)) {
       const userId = this.generateId();
       const hashedPassword = await bcrypt.hash(password, 10);
@@ -61,7 +59,7 @@ export class AuthService {
       })
 
     } else {
-      console.log('This email is already used!');
+      alert('This email is already used.')
     }
   }
 

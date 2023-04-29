@@ -50,10 +50,8 @@ export class NewDeckModalComponent implements OnInit {
       this.fieldsEmpty = false;
 
       this._dbService.addDeck(this.newDeck).subscribe(() => {
-        console.log('New deck added successfully.');
         this.closeModal();
       }, (error) => {
-        console.error('Error adding new deck:', error);
         this.closeModal();
       });
     } else {

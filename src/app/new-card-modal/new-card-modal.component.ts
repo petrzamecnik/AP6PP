@@ -58,10 +58,8 @@ export class NewCardModalComponent {
 
       if (this.deckAuthorId === this.currentUserId) {
         this._dbService.addCard(this.deckId, this.newCard).subscribe(() => {
-          console.log('New card added');
           this.closeModal();
         }, (error) => {
-          console.log('Error adding new card', error);
           this.closeModal();
         })
       } else {

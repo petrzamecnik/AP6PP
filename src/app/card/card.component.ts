@@ -39,8 +39,6 @@ export class CardComponent implements OnInit {
   toggleCard() {
     this.textType = this.textType === ETextType.question ? ETextType.answer : ETextType.question;
     this.cardText = this.textType === ETextType.question ? this.card?.question : this.card?.answer;
-    console.log(this.card);
-
   }
 
   onCardClick() {
