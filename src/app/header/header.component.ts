@@ -35,4 +35,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this._destroy$.next();
     this._destroy$.complete();
   }
+
+  navigateToHomepage() {
+    this._router.navigate(['/']);
+  }
 }
