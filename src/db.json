@@ -243,25 +243,25 @@
       "lastUpdated": ""
     },
     {
-      "id": "1682874332130_0.3968859863304708",
-      "title": "Matematika 1",
-      "subject": "MA1MA",
-      "field": "Matematika",
-      "author": "Jan Novák",
+      "id": "1682874860020_0.584532286379801",
+      "title": "Hry",
+      "subject": "League of Legends",
+      "field": "Counter-picks",
+      "author": "",
       "authorId": "1682872657802_0.08070122714734618",
-      "rating": 4,
+      "rating": 3,
       "cards": [
         {
-          "id": "1",
-          "title": "Matematika",
-          "question": "Jaký je výsledek součtu 5+7?",
-          "answer": "12"
+          "answer": "Ano",
+          "id": "1682711965850_0.5875791968524453",
+          "question": "Lze považavat fiora za countera do siona?",
+          "title": "Top"
         },
         {
-          "id": "2",
-          "title": "Matematika",
-          "question": "Jak se nazývá funkce, která je rovna své derivaci?",
-          "answer": "Exponenciální funkce"
+          "answer": "Ano",
+          "id": "1682712021779_0.8045420115426059",
+          "question": "Je hraní s Mišem debuff?",
+          "title": "Mišo"
         }
       ],
       "lastUpdated": ""
