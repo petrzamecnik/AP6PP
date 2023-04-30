@@ -107,6 +107,14 @@ export class DecksComponent implements OnInit, OnDestroy {
     reader.onload = () => {
       try {
         const deck = JSON.parse(reader.result as string) as IDeck;
+        const currentUserId = this._authService.loggedInUserId;
+
+        if (currentUserId) {
+          deck.authorId = currentUserId;
+          deck.id = this.generateId();
+        }
+
+
           this.checkDeckExists(deck).subscribe(exists => {
             if (exists) {
               alert('Deck already exists in database!');
@@ -124,10 +132,18 @@ export class DecksComponent implements OnInit, OnDestroy {
     };
   }
 
+  generateId(): string {
+    const random = Math.random();
+    const timestampString = new Date().getTime().toString();
+    return `${timestampString}_${random}`;
+  }
+
   private checkDeckExists(deck: IDeck): Observable<boolean> {
     return this._dbService.getDecks().pipe(
       map((decks) => !!decks.find(d => d.id === deck.id))
     );
   }
+
+
 
 }

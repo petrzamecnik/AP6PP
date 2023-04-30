@@ -241,6 +241,30 @@
         }
       ],
       "lastUpdated": ""
+    },
+    {
+      "id": "1682874332130_0.3968859863304708",
+      "title": "Matematika 1",
+      "subject": "MA1MA",
+      "field": "Matematika",
+      "author": "Jan Novák",
+      "authorId": "1682872657802_0.08070122714734618",
+      "rating": 4,
+      "cards": [
+        {
+          "id": "1",
+          "title": "Matematika",
+          "question": "Jaký je výsledek součtu 5+7?",
+          "answer": "12"
+        },
+        {
+          "id": "2",
+          "title": "Matematika",
+          "question": "Jak se nazývá funkce, která je rovna své derivaci?",
+          "answer": "Exponenciální funkce"
+        }
+      ],
+      "lastUpdated": ""
     }
   ]
 }
