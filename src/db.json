@@ -23,6 +23,12 @@
       "username": "qweUsername",
       "email": "qwe",
       "password": "$2a$10$yd.shD5yLAJGy/xGNA3hd.1OAC3whI4s5F8IweolbSaToQdRDH6TK"
+    },
+    {
+      "id": "1682872657802_0.08070122714734618",
+      "username": "test",
+      "email": "test@test.com",
+      "password": "$2a$10$e13gRaNFBt2Shh0UbuipS.421hMSsd8VC7N0T3U8o/jz4pW/Iyy2G"
     }
   ],
   "decks": [
