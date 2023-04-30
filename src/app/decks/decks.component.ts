@@ -114,20 +114,23 @@ export class DecksComponent implements OnInit, OnDestroy {
           deck.id = this.generateId();
         }
 
-
-          this.checkDeckExists(deck).subscribe(exists => {
-            if (exists) {
-              alert('Deck already exists in database!');
-            } else {
+        this.checkDeckExists(deck).subscribe(exists => {
+          if (exists) {
+            alert('Deck already exists in database!');
+          } else {
+            if (deck.title && deck.subject && deck.authorId) {
               this._dbService.addDeck(deck).subscribe(() => {
                 this._dbService.getDecks().subscribe();
                 alert('Deck imported successfully!');
               });
+            } else {
+              alert('Error importing deck!')
             }
-          });
+          }
+        });
       } catch (err) {
         console.error(err);
-        alert('Error parsing JSON!');
+        alert('Error importing deck!');
       }
     };
   }
